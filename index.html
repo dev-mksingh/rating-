@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  
+  <title>Frontend Mentor | Interactive rating component</title>
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution { font-size: 11px; text-align: center; }
+    .attribution a { color: hsl(228, 45%, 44%); }
+  </style>
+</head>
+<body>
+<main>
+  <!-- Rating state start -->
+<section class="rate ">
+  <img src="images/icon-star.svg" alt="">
+
+  <h2 class="heading">How did we do?</h2>
+
+  <p class="content">Please let us know how we did with your support request. All feedback is appreciated 
+  to help us improve our offering!</p>
+  <div class="star-rating">
+    <label for="one"> <input type="radio" name="rating" id="one" value="1"><span>1</span></label>
+    <label for="two"> <input type="radio" name="rating" id="two" value="2"><span>2</span></label>
+    <label for="three"> <input type="radio" name="rating" id="three" value="3"><span>3</span></label>
+    <label for="four"> <input type="radio" name="rating" id="four" value="4"><span>4</span></label>
+    <label for="five"> <input type="radio" name="rating" id="five" value="5"><span>5</span></label>
+    
+  </div>
+
+  <input type="submit" value="Submit" class="submit">
+  </section>
+
+  <!-- Rating state end -->
+
+  <!-- Thank you state start -->
+<section class="thanks rate">
+  <img src="images/illustration-thank-you.svg" alt="">
+  <p class="selected-rating">You selected <!-- Add rating here --> out of 5</p>
+
+  <p>Thank you!</p>
+
+  <p>We appreciate you taking the time to give a rating. If you ever need more support, 
+  don’t hesitate to get in touch!</p>
+  </section>
+
+  <!-- Thank you state end -->
+  </main>
+
+  
+  <div class="attribution">
+    Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank">Frontend Mentor</a>. 
+    Coded by <a href="#">Manoj Kumar SIngh</a>.
+  </div>
+
+  <script>
+    const startState = document.querySelector('.rate:nth-of-type(1)');
+    const submit = document.querySelector('.submit');
+    const thanks = document.querySelector('.thanks');
+    const selectedRating = document.querySelector(".selected-rating");
+    const rateGiven = document.querySelector('input[name="rating"]:checked').value;
+    submit.addEventListener('click', function(evt){
+      evt.preventDefault();
+      const rateGiven = document.querySelector('input[name="rating"]:checked').value;
+      selectedRating.textContent = `You selected ${rateGiven} out of 5`;
+      thanks.style.display="flex";
+      startState.parentElement.replaceChild(thanks,startState);
+    });
+  </script>
+</body>
+</html>
